@@ -1,39 +1,26 @@
-PythonIsort = require './python-isort'
+PythonImportanize = require './python-importanize'
 
 module.exports =
   config:
-    isortPath:
+    importanizePath:
       type: 'string'
-      default: 'isort'
+      default: 'importanize'
     sortOnSave:
       type: 'boolean'
       default: false
-    checkOnSave:
-      type: 'boolean'
-      default: true
 
   activate: ->
-    pi = new PythonIsort()
+    pi = new PythonImportanize()
 
     atom.commands.add 'atom-workspace', 'pane:active-item-changed', ->
       pi.removeStatusbarItem()
 
-    atom.commands.add 'atom-workspace', 'python-isort:sortImports', ->
+    atom.commands.add 'atom-workspace', 'python-importanize:sortImports', ->
       pi.sortImports()
 
-    atom.commands.add 'atom-workspace', 'python-isort:checkImports', ->
-      pi.checkImports()
-
-    atom.config.observe 'python-isort.sortOnSave', (value) ->
+    atom.config.observe 'python-importanize.sortOnSave', (value) ->
       atom.workspace.observeTextEditors (editor) ->
         if value == true
-          editor._isortSort = editor.onDidSave -> pi.sortImports()
+          editor._importanizeSort = editor.onDidSave -> pi.sortImports()
         else
-          editor._isortSort?.dispose()
-
-    atom.config.observe 'python-isort.checkOnSave', (value) ->
-      atom.workspace.observeTextEditors (editor) ->
-        if value == true
-          editor._isortCheck = editor.onDidSave -> pi.checkImports()
-        else
-          editor._isortCheck?.dispose()
+          editor._importanizeSort?.dispose()

@@ -3,15 +3,11 @@
     'label': 'Packages'
     'submenu': [
       {
-        'label': 'Python Isort'
+        'label': 'Python Importanize'
         'submenu': [
           {
             'label': 'Sort Python Imports'
-            'command': 'python-isort:sortImports'
-          }
-          {
-            'label': 'Check Python Imports'
-            'command': 'python-isort:checkImports'
+            'command': 'python-importanize:sortImports'
           }
         ]
       }

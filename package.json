@@ -1,9 +1,9 @@
 {
-  "name": "python-isort",
+  "name": "python-importanize",
   "main": "./lib/index",
-  "version": "0.0.7",
-  "description": "Organize Python Imports using Isort",
-  "repository": "https://github.com/bh/atom-python-isort",
+  "version": "0.0.1",
+  "description": "Organize Python Imports using importanize",
+  "repository": "https://github.com/miki725/atom-python-importanize",
   "license": "MIT",
   "engines": {
     "atom": ">=0.185.0 <2.0.0"
